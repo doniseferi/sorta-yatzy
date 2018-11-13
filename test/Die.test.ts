@@ -1,6 +1,15 @@
 import assert from 'assert';
 import Die from '../src/Die';
 
+describe("Die", () => {
+    it('Die throws an exception if invalid state is attempted', () => {
+        assert.throws(() => new Die());
+        assert.throws(() => new Die(null));
+        assert.throws(() => new Die(undefined));
+        assert.throws(() => new Die('slimmy'));
+    })
+})
+
 describe('Value', () => {
     it('value returns correct value', () => {
         assert.equal(1, new Die(1).value);
@@ -17,11 +26,4 @@ describe('Value', () => {
         assert.throws(() => new Die(7));
         assert.throws(() => new Die(2345));
     });
-
-    it('Die throws an exception if invalid state is attempted', () => {
-        assert.throws(() => new Die());
-        assert.throws(() => new Die(null));
-        assert.throws(() => new Die(undefined));
-        assert.throws(() => new Die('slimmy'));
-    })
 });

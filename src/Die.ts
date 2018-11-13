@@ -1,6 +1,10 @@
 import { isNullOrUndefined } from "util";
 
-export default class Die {
+interface IDie {
+    value: number;
+}
+
+export default class Die implements IDie {
 
     constructor(public value: number) {
         this.validate(value);
