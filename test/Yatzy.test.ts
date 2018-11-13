@@ -13,6 +13,7 @@ describe('Yatzy', () => {
   it('scores 50', () => {
     assert.equal(50, Yatzy.yatzy(4, 4, 4, 4, 4));
     assert.equal(50, Yatzy.yatzy(6, 6, 6, 6, 6));
+    assert.equal(50, Yatzy.yatzy(1, 1, 1, 1, 1));
     assert.equal(0, Yatzy.yatzy(6, 6, 6, 6, 3));
   });
 });
