@@ -1,7 +1,9 @@
-export default class Yatzy {
-  private dice: number[];
+import Die from '../src/Die';
 
-  constructor(d1: number, d2: number, d3: number, d4: number, _5: number) {
+export default class Yatzy {
+  private dice: Die[];
+
+  constructor(d1: Die, d2: Die, d3: Die, d4: Die, _5: Die) {
     this.dice = [];
     this.dice[0] = d1;
     this.dice[1] = d2;
@@ -10,77 +12,77 @@ export default class Yatzy {
     this.dice[4] = _5;
   }
 
-  static chance(d1: number, d2: number, d3: number, d4: number, d5: number): number {
+  static chance(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
     var total = 0;
-    total += d1;
-    total += d2;
-    total += d3;
-    total += d4;
-    total += d5;
+    total += d1.value;
+    total += d2.value;
+    total += d3.value;
+    total += d4.value;
+    total += d5.value;
     return total;
   }
 
-  static yatzy(...args: number[]): number {
+  static yatzy(...args: Die[]): number {
     var counts = [0, 0, 0, 0, 0, 0, 0, 0];
     for (var i = 0; i != args.length; ++i) {
-      var die = args[i];
+      var die = args[i].value;
       counts[die - 1]++;
     }
     for (i = 0; i != 6; i++) if (counts[i] == 5) return 50;
     return 0;
   }
 
-  static ones(d1: number, d2: number, d3: number, d4: number, d5: number): number {
+  static ones(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
     var sum = 0;
-    if (d1 == 1) sum++;
-    if (d2 == 1) sum++;
-    if (d3 == 1) sum++;
-    if (d4 == 1) sum++;
-    if (d5 == 1) sum++;
+    if (d1.value == 1) sum++;
+    if (d2.value == 1) sum++;
+    if (d3.value == 1) sum++;
+    if (d4.value == 1) sum++;
+    if (d5.value == 1) sum++;
 
     return sum;
   }
 
-  static twos(d1: number, d2: number, d3: number, d4: number, d5: number): number {
+  static twos(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
     var sum = 0;
-    if (d1 == 2) sum += 2;
-    if (d2 == 2) sum += 2;
-    if (d3 == 2) sum += 2;
-    if (d4 == 2) sum += 2;
-    if (d5 == 2) sum += 2;
+    if (d1.value == 2) sum += 2;
+    if (d2.value == 2) sum += 2;
+    if (d3.value == 2) sum += 2;
+    if (d4.value == 2) sum += 2;
+    if (d5.value == 2) sum += 2;
     return sum;
   }
 
-  static threes(d1: number, d2: number, d3: number, d4: number, d5: number): number {
+  static threes(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
     var s;
     s = 0;
-    if (d1 == 3) s += 3;
-    if (d2 == 3) s += 3;
-    if (d3 == 3) s += 3;
-    if (d4 == 3) s += 3;
-    if (d5 == 3) s += 3;
+    if (d1.value == 3) s += 3;
+    if (d2.value == 3) s += 3;
+    if (d3.value == 3) s += 3;
+    if (d4.value == 3) s += 3;
+    if (d5.value == 3) s += 3;
     return s;
   }
 
-  static score_pair(d1: number, d2: number, d3: number, d4: number, d5: number): number {
+  static score_pair(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
     var counts = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-    counts[d1 - 1]++;
-    counts[d2 - 1]++;
-    counts[d3 - 1]++;
-    counts[d4 - 1]++;
-    counts[d5 - 1]++;
+    counts[d1.value - 1]++;
+    counts[d2.value - 1]++;
+    counts[d3.value - 1]++;
+    counts[d4.value - 1]++;
+    counts[d5.value - 1]++;
     var at;
     for (at = 0; at != 6; at++) if (counts[6 - at - 1] >= 2) return (6 - at) * 2;
     return 0;
   }
 
-  static two_pair(d1: number, d2: number, d3: number, d4: number, d5: number): number {
+  static two_pair(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
     var counts = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-    counts[d1 - 1]++;
-    counts[d2 - 1]++;
-    counts[d3 - 1]++;
-    counts[d4 - 1]++;
-    counts[d5 - 1]++;
+    counts[d1.value - 1]++;
+    counts[d2.value - 1]++;
+    counts[d3.value - 1]++;
+    counts[d4.value - 1]++;
+    counts[d5.value - 1]++;
     var n = 0;
     var score = 0;
     for (let i = 0; i < 6; i += 1)
@@ -92,55 +94,55 @@ export default class Yatzy {
     else return 0;
   }
 
-  static four_of_a_kind(_1: number, _2: number, d3: number, d4: number, d5: number): number {
+  static four_of_a_kind(_1: Die, _2: Die, d3: Die, d4: Die, d5: Die): number {
     var tallies;
     tallies = [0, 0, 0, 0, 0, 0, 0, 0];
-    tallies[_1 - 1]++;
-    tallies[_2 - 1]++;
-    tallies[d3 - 1]++;
-    tallies[d4 - 1]++;
-    tallies[d5 - 1]++;
+    tallies[_1.value - 1]++;
+    tallies[_2.value - 1]++;
+    tallies[d3.value - 1]++;
+    tallies[d4.value - 1]++;
+    tallies[d5.value - 1]++;
     for (let i = 0; i < 6; i++) if (tallies[i] >= 4) return (i + 1) * 4;
     return 0;
   }
 
-  static three_of_a_kind(d1: number, d2: number, d3: number, d4: number, d5: number): number {
+  static three_of_a_kind(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
     var t;
     t = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-    t[d1 - 1]++;
-    t[d2 - 1]++;
-    t[d3 - 1]++;
-    t[d4 - 1]++;
-    t[d5 - 1]++;
+    t[d1.value - 1]++;
+    t[d2.value - 1]++;
+    t[d3.value - 1]++;
+    t[d4.value - 1]++;
+    t[d5.value - 1]++;
     for (let i = 0; i < 6; i++) if (t[i] >= 3) return (i + 1) * 3;
     return 0;
   }
 
-  static smallStraight(d1: number, d2: number, d3: number, d4: number, d5: number): number {
+  static smallStraight(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
     var tallies;
     tallies = [0, 0, 0, 0, 0, 0, 0];
-    tallies[d1 - 1] += 1;
-    tallies[d2 - 1] += 1;
-    tallies[d3 - 1] += 1;
-    tallies[d4 - 1] += 1;
-    tallies[d5 - 1] += 1;
+    tallies[d1.value - 1] += 1;
+    tallies[d2.value - 1] += 1;
+    tallies[d3.value - 1] += 1;
+    tallies[d4.value - 1] += 1;
+    tallies[d5.value - 1] += 1;
     if (tallies[0] == 1 && tallies[1] == 1 && tallies[2] == 1 && tallies[3] == 1 && tallies[4] == 1) return 15;
     return 0;
   }
 
-  static largeStraight(d1: number, d2: number, d3: number, d4: number, d5: number): number {
+  static largeStraight(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
     var tallies;
     tallies = [0, 0, 0, 0, 0, 0, 0, 0];
-    tallies[d1 - 1] += 1;
-    tallies[d2 - 1] += 1;
-    tallies[d3 - 1] += 1;
-    tallies[d4 - 1] += 1;
-    tallies[d5 - 1] += 1;
+    tallies[d1.value - 1] += 1;
+    tallies[d2.value - 1] += 1;
+    tallies[d3.value - 1] += 1;
+    tallies[d4.value - 1] += 1;
+    tallies[d5.value - 1] += 1;
     if (tallies[1] == 1 && tallies[2] == 1 && tallies[3] == 1 && tallies[4] == 1 && tallies[5] == 1) return 20;
     return 0;
   }
 
-  static fullHouse(d1: number, d2: number, d3: number, d4: number, d5: number): number {
+  static fullHouse(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
     var tallies;
     var _2 = false;
     var i;
@@ -149,11 +151,11 @@ export default class Yatzy {
     var _3_at = 0;
 
     tallies = [0, 0, 0, 0, 0, 0, 0, 0];
-    tallies[d1 - 1] += 1;
-    tallies[d2 - 1] += 1;
-    tallies[d3 - 1] += 1;
-    tallies[d4 - 1] += 1;
-    tallies[d5 - 1] += 1;
+    tallies[d1.value - 1] += 1;
+    tallies[d2.value - 1] += 1;
+    tallies[d3.value - 1] += 1;
+    tallies[d4.value - 1] += 1;
+    tallies[d5.value - 1] += 1;
 
     for (i = 0; i != 6; i += 1)
       if (tallies[i] == 2) {
@@ -175,7 +177,7 @@ export default class Yatzy {
     var sum;
     sum = 0;
     for (let at = 0; at != 5; at++) {
-      if (this.dice[at] == 4) {
+      if (this.dice[at].value == 4) {
         sum += 4;
       }
     }
@@ -185,13 +187,13 @@ export default class Yatzy {
   fives(): number {
     let s = 0;
     var i;
-    for (i = 0; i < this.dice.length; i++) if (this.dice[i] == 5) s = s + 5;
+    for (i = 0; i < this.dice.length; i++) if (this.dice[i].value == 5) s = s + 5;
     return s;
   }
 
   sixes(): number {
     let sum = 0;
-    for (var at = 0; at < this.dice.length; at++) if (this.dice[at] == 6) sum = sum + 6;
+    for (var at = 0; at < this.dice.length; at++) if (this.dice[at].value == 6) sum = sum + 6;
     return sum;
   }
 }
