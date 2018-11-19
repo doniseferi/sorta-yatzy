@@ -3,21 +3,21 @@ import { isNullOrUndefined } from 'util';
 
 export default class YatzyCollection {
 
-    public static CreateUsingDieArray_TO_REFACTOR(dice: Die[]): YatzyCollection {
+    public static CreateUsingDieCollection(dice: Die[]): YatzyCollection {
         return new YatzyCollection(dice);
     }
 
-    public static CreateUsingNumbersArray_TO_REFACTOR(numbers: number[]) {
+    public static CreateUsingNumbersCollection(numbers: number[]) {
         let dice = numbers.map(number => new Die(number));
-        return this.CreateUsingDieArray_TO_REFACTOR(dice);
+        return this.CreateUsingDieCollection(dice);
     }
 
-    public static CreateUsingMulitpleDie_TO_REFACTOR(one: Die, two: Die, three: Die, four: Die, five: Die): YatzyCollection {
-        return this.CreateUsingDieArray_TO_REFACTOR([one, two, three, four, five]);
+    public static CreateUsingDie(one: Die, two: Die, three: Die, four: Die, five: Die): YatzyCollection {
+        return this.CreateUsingDieCollection([one, two, three, four, five]);
     }
 
-    public static CreateUsingMultipleNumbers_TO_REFACTOR(one: number, two: number, three: number, four: number, five: number): YatzyCollection {
-        return this.CreateUsingNumbersArray_TO_REFACTOR([one, two, three, four, five]);
+    public static CreateUsingNumbers(one: number, two: number, three: number, four: number, five: number): YatzyCollection {
+        return this.CreateUsingNumbersCollection([one, two, three, four, five]);
     }
 
     private constructor(public dice: Die[]) { }

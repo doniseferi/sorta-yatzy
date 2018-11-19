@@ -11,7 +11,7 @@ describe("Dice", () => {
         let four = new Die(4);
         let five = new Die(5);
 
-        let dice = YatzyCollection.CreateUsingDieArray_TO_REFACTOR([one, two, three, four, five]).dice;
+        let dice = YatzyCollection.CreateUsingDieCollection([one, two, three, four, five]).dice;
 
         assert.equal(dice[0].value, one.value);
         assert.equal(dice[1].value, two.value);
@@ -21,7 +21,7 @@ describe("Dice", () => {
     });
 
     it('Can create using an array of numbers', () => {
-        let dice = YatzyCollection.CreateUsingNumbersArray_TO_REFACTOR([1, 2, 3, 4, 5]).dice;
+        let dice = YatzyCollection.CreateUsingNumbersCollection([1, 2, 3, 4, 5]).dice;
 
         let one = new Die(1);
         let two = new Die(2);
@@ -44,7 +44,7 @@ describe("Dice", () => {
         let four = new Die(4);
         let five = new Die(5);
 
-        let dice = YatzyCollection.CreateUsingMulitpleDie_TO_REFACTOR(one, two, three, four, five).dice;
+        let dice = YatzyCollection.CreateUsingDie(one, two, three, four, five).dice;
 
         assert.equal(dice[0].value, one.value);
         assert.equal(dice[1].value, two.value);
@@ -61,7 +61,7 @@ describe("Dice", () => {
         let four = new Die(4);
         let five = new Die(5);
 
-        let dice = YatzyCollection.CreateUsingMultipleNumbers_TO_REFACTOR(1, 2, 3, 4, 5).dice;
+        let dice = YatzyCollection.CreateUsingNumbers(1, 2, 3, 4, 5).dice;
 
         assert.equal(dice[0].value, one.value);
         assert.equal(dice[1].value, two.value);
