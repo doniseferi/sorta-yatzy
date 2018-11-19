@@ -6,13 +6,16 @@ export default class YatzyCollection {
     public static CreateUsingDieArray_TO_REFACTOR(dice: Die[]): YatzyCollection {
         return new YatzyCollection(dice);
     }
+
     public static CreateUsingNumbersArray_TO_REFACTOR(numbers: number[]) {
         let dice = numbers.map(number => new Die(number));
         return this.CreateUsingDieArray_TO_REFACTOR(dice);
     }
+
     public static CreateUsingMulitpleDie_TO_REFACTOR(one: Die, two: Die, three: Die, four: Die, five: Die): YatzyCollection {
         return this.CreateUsingDieArray_TO_REFACTOR([one, two, three, four, five]);
     }
+
     public static CreateUsingMultipleNumbers_TO_REFACTOR(one: number, two: number, three: number, four: number, five: number): YatzyCollection {
         return this.CreateUsingNumbersArray_TO_REFACTOR([one, two, three, four, five]);
     }
