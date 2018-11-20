@@ -1,9 +1,9 @@
 import assert, { AssertionError } from 'assert';
-import YatzyCollection from '../src/Dice';
+import YatzyCollection from '../src/YatzyCollection';
 import Die from '../src/Die';
 
-describe("Dice", () => {
-    it('Can create using an array of die', () => {
+describe("YatzyCollection", () => {
+    it('CreateUsingDieCollection Can create using an array of die', () => {
 
         let one = new Die(1);
         let two = new Die(2);
@@ -20,7 +20,7 @@ describe("Dice", () => {
         assert.equal(dice[4].value, five.value);
     });
 
-    it('Can create using an array of numbers', () => {
+    it('CreateUsingNumbersCollection Can create using an array of numbers', () => {
         let dice = YatzyCollection.CreateUsingNumbersCollection([1, 2, 3, 4, 5]).dice;
 
         let one = new Die(1);
@@ -36,7 +36,7 @@ describe("Dice", () => {
         assert.equal(dice[4].value, five.value);
     });
 
-    it('Can create using individual die', () => {
+    it('CreateUsingDie Can create using individual die', () => {
 
         let one = new Die(1);
         let two = new Die(2);
@@ -53,7 +53,7 @@ describe("Dice", () => {
         assert.equal(dice[4].value, five.value);
     });
 
-    it('Can create using individual individual numbers', () => {
+    it('CreateUsingNumbers Can create using individual individual numbers', () => {
 
         let one = new Die(1);
         let two = new Die(2);

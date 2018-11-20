@@ -1,15 +1,11 @@
 import Die from '../src/Die';
+import YatzyCollection from './YatzyCollection';
 
 export default class Yatzy {
-  private dice: Die[];
+  private yatzyCollection: YatzyCollection;
 
   constructor(d1: Die, d2: Die, d3: Die, d4: Die, _5: Die) {
-    this.dice = [];
-    this.dice[0] = d1;
-    this.dice[1] = d2;
-    this.dice[2] = d3;
-    this.dice[3] = d4;
-    this.dice[4] = _5;
+    this.yatzyCollection = YatzyCollection.CreateUsingDie(d1, d2, d3, d4, _5);
   }
 
   static chance(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
@@ -177,7 +173,7 @@ export default class Yatzy {
     var sum;
     sum = 0;
     for (let at = 0; at != 5; at++) {
-      if (this.dice[at].value == 4) {
+      if (this.yatzyCollection.dice[at].value == 4) {
         sum += 4;
       }
     }
@@ -187,13 +183,13 @@ export default class Yatzy {
   fives(): number {
     let s = 0;
     var i;
-    for (i = 0; i < this.dice.length; i++) if (this.dice[i].value == 5) s = s + 5;
+    for (i = 0; i < this.yatzyCollection.dice.length; i++) if (this.yatzyCollection.dice[i].value == 5) s = s + 5;
     return s;
   }
 
   sixes(): number {
     let sum = 0;
-    for (var at = 0; at < this.dice.length; at++) if (this.dice[at].value == 6) sum = sum + 6;
+    for (var at = 0; at < this.yatzyCollection.dice.length; at++) if (this.yatzyCollection.dice[at].value == 6) sum = sum + 6;
     return sum;
   }
 }
