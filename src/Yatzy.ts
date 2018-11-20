@@ -2,7 +2,7 @@ import Die from '../src/Die';
 import { Dice } from './Dice';
 import { Chance } from './Score/ChanceScore';
 import { YatzyScore } from './Score/YatzyScore';
-import { OnesScore } from './Score/OnesScore';
+import { OnesScore, SingleDieScore, TwosScore } from './Score/OnesScore';
 
 export default class Yatzy {
   private yatzyCollection: Dice;
@@ -23,17 +23,12 @@ export default class Yatzy {
 
   static ones(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
     let collcetion = Dice.CreateUsingDie(d1,d2,d3,d4,d5);
-    return new OnesScore().Score(collcetion);
+    return new OnesScore(new SingleDieScore().Score).Score(collcetion);
     }
 
   static twos(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
-    var sum = 0;
-    if (d1.value == 2) sum += 2;
-    if (d2.value == 2) sum += 2;
-    if (d3.value == 2) sum += 2;
-    if (d4.value == 2) sum += 2;
-    if (d5.value == 2) sum += 2;
-    return sum;
+    let collcetion = Dice.CreateUsingDie(d1,d2,d3,d4,d5);
+    return new TwosScore(new SingleDieScore().Score).Score(collcetion);
   }
 
   static threes(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {

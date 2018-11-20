@@ -3,13 +3,27 @@ import { Dice } from '../Dice';
 
 export class OnesScore implements IScore {
     
-    private readonly singleDieScore : SingleDieScore;
-    constructor() {
-        this.singleDieScore = new SingleDieScore();
+    private  readonly funcky: (collection: Dice, no: number) => number;
+    constructor(funck: (collection: Dice, no: number) => number) {
+        this.funcky = funck;
     }
 
+
     Score(collection: Dice): number {
-        return this.singleDieScore.Score(collection, 1);
+        return this.funcky(collection, 1);
+    }
+}
+
+export class TwosScore implements IScore {
+    
+    private  readonly funcky: (collection: Dice, no: number) => number;
+    constructor(funck: (collection: Dice, no: number) => number) {
+        this.funcky = funck;
+    }
+
+
+    Score(collection: Dice): number {
+        return this.funcky(collection, 2);
     }
 }
 
