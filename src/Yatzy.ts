@@ -1,5 +1,7 @@
 import Die from '../src/Die';
 import { YatzyCollection } from './YatzyCollection';
+import { Chance } from './Score/ChanceScore';
+import { YatzyScore } from './Score/YatzyScore';
 
 export default class Yatzy {
   private yatzyCollection: YatzyCollection;
@@ -9,23 +11,13 @@ export default class Yatzy {
   }
 
   static chance(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
-    var total = 0;
-    total += d1.value;
-    total += d2.value;
-    total += d3.value;
-    total += d4.value;
-    total += d5.value;
-    return total;
+    var collection = YatzyCollection.CreateUsingDie(d1, d2, d3, d4, d5);
+    return new Chance().Score(collection);
   }
 
   static yatzy(...args: Die[]): number {
-    var counts = [0, 0, 0, 0, 0, 0, 0, 0];
-    for (var i = 0; i != args.length; ++i) {
-      var die = args[i].value;
-      counts[die - 1]++;
-    }
-    for (i = 0; i != 6; i++) if (counts[i] == 5) return 50;
-    return 0;
+    let collection = YatzyCollection.CreateUsingDieCollection(args);
+    return new YatzyScore().Score(collection);
   }
 
   static ones(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
