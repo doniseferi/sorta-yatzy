@@ -1,5 +1,5 @@
-import { YatzyCollection } from "../YatzyCollection";
+import { Dice } from "../Dice";
 
 export interface IScore {
-    Score(collection: YatzyCollection): number;
+    Score(collection: Dice): number;
 }

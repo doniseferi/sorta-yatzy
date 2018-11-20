@@ -1,22 +1,22 @@
 import Die from '../src/Die';
-import { YatzyCollection } from './YatzyCollection';
+import { Dice } from './Dice';
 import { Chance } from './Score/ChanceScore';
 import { YatzyScore } from './Score/YatzyScore';
 
 export default class Yatzy {
-  private yatzyCollection: YatzyCollection;
+  private yatzyCollection: Dice;
 
   constructor(d1: Die, d2: Die, d3: Die, d4: Die, _5: Die) {
-    this.yatzyCollection = YatzyCollection.CreateUsingDie(d1, d2, d3, d4, _5);
+    this.yatzyCollection = Dice.CreateUsingDie(d1, d2, d3, d4, _5);
   }
 
   static chance(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
-    var collection = YatzyCollection.CreateUsingDie(d1, d2, d3, d4, d5);
+    var collection = Dice.CreateUsingDie(d1, d2, d3, d4, d5);
     return new Chance().Score(collection);
   }
 
   static yatzy(...args: Die[]): number {
-    let collection = YatzyCollection.CreateUsingDieCollection(args);
+    let collection = Dice.CreateUsingDieCollection(args);
     return new YatzyScore().Score(collection);
   }
 

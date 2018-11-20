@@ -1,5 +1,5 @@
 import assert, { AssertionError } from 'assert';
-import { YatzyCollection } from '../src/YatzyCollection';
+import { Dice } from '../src/Dice';
 import Die from '../src/Die';
 
 describe("YatzyCollection", () => {
@@ -11,7 +11,7 @@ describe("YatzyCollection", () => {
         let four = new Die(4);
         let five = new Die(5);
 
-        let dice = YatzyCollection.CreateUsingDieCollection([one, two, three, four, five]).dice;
+        let dice = Dice.CreateUsingDieCollection([one, two, three, four, five]).dice;
 
         assert.equal(dice[0].value, one.value);
         assert.equal(dice[1].value, two.value);
@@ -21,7 +21,7 @@ describe("YatzyCollection", () => {
     });
 
     it('CreateUsingNumbersCollection Can create using an array of numbers', () => {
-        let dice = YatzyCollection.CreateUsingNumbersCollection([1, 2, 3, 4, 5]).dice;
+        let dice = Dice.CreateUsingNumbersCollection([1, 2, 3, 4, 5]).dice;
 
         let one = new Die(1);
         let two = new Die(2);
@@ -44,7 +44,7 @@ describe("YatzyCollection", () => {
         let four = new Die(4);
         let five = new Die(5);
 
-        let dice = YatzyCollection.CreateUsingDie(one, two, three, four, five).dice;
+        let dice = Dice.CreateUsingDie(one, two, three, four, five).dice;
 
         assert.equal(dice[0].value, one.value);
         assert.equal(dice[1].value, two.value);
@@ -61,7 +61,7 @@ describe("YatzyCollection", () => {
         let four = new Die(4);
         let five = new Die(5);
 
-        let dice = YatzyCollection.CreateUsingNumbers(1, 2, 3, 4, 5).dice;
+        let dice = Dice.CreateUsingNumbers(1, 2, 3, 4, 5).dice;
 
         assert.equal(dice[0].value, one.value);
         assert.equal(dice[1].value, two.value);

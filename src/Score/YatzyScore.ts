@@ -1,9 +1,9 @@
 import { IScore } from "./IScore";
-import { YatzyCollection } from '../YatzyCollection';
+import { Dice } from '../Dice';
 
 export class YatzyScore implements IScore {
 
-    Score(collection: YatzyCollection): number {
+    Score(collection: Dice): number {
         const yatzyScore = 50;
 
         let numberOfUniqueDie = new Set(collection.dice.map(x => x.value)).size;
