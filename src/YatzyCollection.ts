@@ -1,7 +1,7 @@
 import Die from './Die';
 import { isNullOrUndefined } from 'util';
 
-export default class YatzyCollection {
+export class YatzyCollection {
 
     public static CreateUsingDieCollection(dice: Die[]): YatzyCollection {
         return new YatzyCollection(dice);

@@ -1,5 +1,5 @@
 import assert, { AssertionError } from 'assert';
-import YatzyCollection from '../src/YatzyCollection';
+import { YatzyCollection } from '../src/YatzyCollection';
 import Die from '../src/Die';
 
 describe("YatzyCollection", () => {

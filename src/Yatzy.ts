@@ -1,5 +1,5 @@
 import Die from '../src/Die';
-import YatzyCollection from './YatzyCollection';
+import { YatzyCollection } from './YatzyCollection';
 
 export default class Yatzy {
   private yatzyCollection: YatzyCollection;
