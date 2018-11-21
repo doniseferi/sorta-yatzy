@@ -2,8 +2,8 @@ import Die from '../src/Die';
 import { Dice } from './Dice';
 import { Chance } from './Score/ChanceScore';
 import { YatzyScore } from './Score/YatzyScore';
-import { OnesScore, TwosScore, ThreesScore } from './Score/OnesScore';
-import { DieFaceMultiplier } from './Score/StrategyScores/DieFaceMultiplier';
+import { Aces, Twos, Threes } from './Score/OnesScore';
+import { DieFaceMultiplier } from './Score/ScoreProxy/DieFaceMultiplier';
 
 export default class Yatzy {
   private yatzyCollection: Dice;
@@ -24,18 +24,18 @@ export default class Yatzy {
 
   static ones(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
     let collcetion = Dice.CreateUsingDie(d1, d2, d3, d4, d5);
-    return new OnesScore(new DieFaceMultiplier().Score).Score(collcetion);
+    return new Aces(new DieFaceMultiplier()).Score(collcetion);
   }
 
   static twos(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
     let collection = Dice.CreateUsingDie(d1, d2, d3, d4, d5);
-    return new TwosScore(new DieFaceMultiplier().Score).Score(collection);
+    return new Twos(new DieFaceMultiplier()).Score(collection);
   }
 
   static threes(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
     let collection = Dice.CreateUsingDie(d1, d2, d3, d4, d5);
 
-    return new ThreesScore(new DieFaceMultiplier().Score).Score(collection);
+    return new Threes(new DieFaceMultiplier()).Score(collection);
   }
 
   static score_pair(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
