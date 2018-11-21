@@ -6,6 +6,9 @@ import { Aces } from './Score/ScoreByProxy/Aces';
 import { DieFaceMultiplier } from './Score/ScoreProxy/DieFaceMultiplier';
 import { Twos } from './Score/ScoreByProxy/Twos';
 import { Threes } from './Score/ScoreByProxy/Threes';
+import { Fours } from './Score/ScoreByProxy/Fours';
+import { Fives } from './Score/ScoreByProxy/Fives';
+import { Sixes } from './Score/ScoreByProxy/Sixes';
 
 export default class Yatzy {
   private yatzyCollection: Dice;
@@ -38,6 +41,18 @@ export default class Yatzy {
     let collection = Dice.CreateUsingDie(d1, d2, d3, d4, d5);
 
     return new Threes(new DieFaceMultiplier()).Score(collection);
+  }
+
+  fours(): number {
+    return new Fours(new DieFaceMultiplier()).Score(this.yatzyCollection);
+  }
+
+  fives(): number {
+    return new Fives(new DieFaceMultiplier()).Score(this.yatzyCollection);
+  }
+
+  sixes(): number {
+    return new Sixes(new DieFaceMultiplier()).Score(this.yatzyCollection);
   }
 
   static score_pair(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
@@ -147,29 +162,5 @@ export default class Yatzy {
 
     if (_2 && _3) return _2_at * 2 + _3_at * 3;
     else return 0;
-  }
-
-  fours(): number {
-    var sum;
-    sum = 0;
-    for (let at = 0; at != 5; at++) {
-      if (this.yatzyCollection.dice[at].value == 4) {
-        sum += 4;
-      }
-    }
-    return sum;
-  }
-
-  fives(): number {
-    let s = 0;
-    var i;
-    for (i = 0; i < this.yatzyCollection.dice.length; i++) if (this.yatzyCollection.dice[i].value == 5) s = s + 5;
-    return s;
-  }
-
-  sixes(): number {
-    let sum = 0;
-    for (var at = 0; at < this.yatzyCollection.dice.length; at++) if (this.yatzyCollection.dice[at].value == 6) sum = sum + 6;
-    return sum;
   }
 }
