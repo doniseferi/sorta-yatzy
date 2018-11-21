@@ -2,7 +2,8 @@ import Die from '../src/Die';
 import { Dice } from './Dice';
 import { Chance } from './Score/ChanceScore';
 import { YatzyScore } from './Score/YatzyScore';
-import { OnesScore, SingleDieScore, TwosScore } from './Score/OnesScore';
+import { OnesScore, TwosScore, ThreesScore } from './Score/OnesScore';
+import { DieFaceMultiplier } from './Score/StrategyScores/DieFaceMultiplier';
 
 export default class Yatzy {
   private yatzyCollection: Dice;
@@ -22,24 +23,19 @@ export default class Yatzy {
   }
 
   static ones(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
-    let collcetion = Dice.CreateUsingDie(d1,d2,d3,d4,d5);
-    return new OnesScore(new SingleDieScore().Score).Score(collcetion);
-    }
+    let collcetion = Dice.CreateUsingDie(d1, d2, d3, d4, d5);
+    return new OnesScore(new DieFaceMultiplier().Score).Score(collcetion);
+  }
 
   static twos(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
-    let collcetion = Dice.CreateUsingDie(d1,d2,d3,d4,d5);
-    return new TwosScore(new SingleDieScore().Score).Score(collcetion);
+    let collection = Dice.CreateUsingDie(d1, d2, d3, d4, d5);
+    return new TwosScore(new DieFaceMultiplier().Score).Score(collection);
   }
 
   static threes(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
-    var s;
-    s = 0;
-    if (d1.value == 3) s += 3;
-    if (d2.value == 3) s += 3;
-    if (d3.value == 3) s += 3;
-    if (d4.value == 3) s += 3;
-    if (d5.value == 3) s += 3;
-    return s;
+    let collection = Dice.CreateUsingDie(d1, d2, d3, d4, d5);
+
+    return new ThreesScore(new DieFaceMultiplier().Score).Score(collection);
   }
 
   static score_pair(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
