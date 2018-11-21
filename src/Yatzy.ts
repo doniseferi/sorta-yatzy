@@ -2,8 +2,10 @@ import Die from '../src/Die';
 import { Dice } from './Dice';
 import { Chance } from './Score/ChanceScore';
 import { YatzyScore } from './Score/YatzyScore';
-import { Aces, Twos, Threes } from './Score/OnesScore';
+import { Aces } from './Score/ScoreByProxy/Aces';
 import { DieFaceMultiplier } from './Score/ScoreProxy/DieFaceMultiplier';
+import { Twos } from './Score/ScoreByProxy/Twos';
+import { Threes } from './Score/ScoreByProxy/Threes';
 
 export default class Yatzy {
   private yatzyCollection: Dice;

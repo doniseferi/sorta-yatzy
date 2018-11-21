@@ -1,7 +1,7 @@
 import { Dice } from '../../Dice';
-import { IScoreProxy } from './IScoreProxy';
+import { IScoreByProxy } from './IScoreByProxy';
 
-export class DieFaceMultiplier implements IScoreProxy {
+export class DieFaceMultiplier implements IScoreByProxy {
     Score(collection: Dice, score: number): number {
         return (
             (collection
