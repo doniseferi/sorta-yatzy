@@ -87,6 +87,7 @@ describe('One pair', () => {
     assert.equal(2, Yatzy.score_pair(new Die(1), new Die(1), new Die(4), new Die(5), new Die(6)));
     assert.equal(6, Yatzy.score_pair(new Die(3), new Die(4), new Die(1), new Die(3), new Die(6)));
     assert.equal(10, Yatzy.score_pair(new Die(5), new Die(4), new Die(1), new Die(5), new Die(6)));
+    assert.equal(12, Yatzy.score_pair(new Die(5), new Die(6), new Die(1), new Die(5), new Die(6)));
   });
 });
 

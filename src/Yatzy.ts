@@ -1,6 +1,6 @@
 import Die from '../src/Die';
 import { Dice } from './Dice';
-import { Chance } from './Score/ChanceScore';
+import { Chance } from './Score/Chance';
 import { YatzyScore } from './Score/YatzyScore';
 import { Aces } from './Score/ScoreByProxy/Aces';
 import { DieFaceMultiplier } from './Score/ScoreProxy/DieFaceMultiplier';
@@ -9,6 +9,7 @@ import { Threes } from './Score/ScoreByProxy/Threes';
 import { Fours } from './Score/ScoreByProxy/Fours';
 import { Fives } from './Score/ScoreByProxy/Fives';
 import { Sixes } from './Score/ScoreByProxy/Sixes';
+import { Pair } from './Score/Pair';
 
 export default class Yatzy {
   private yatzyCollection: Dice;
@@ -56,15 +57,7 @@ export default class Yatzy {
   }
 
   static score_pair(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
-    var counts = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-    counts[d1.value - 1]++;
-    counts[d2.value - 1]++;
-    counts[d3.value - 1]++;
-    counts[d4.value - 1]++;
-    counts[d5.value - 1]++;
-    var at;
-    for (at = 0; at != 6; at++) if (counts[6 - at - 1] >= 2) return (6 - at) * 2;
-    return 0;
+    return new Pair().Score(Dice.CreateUsingDie(d1,d2,d3,d4,d5));
   }
 
   static two_pair(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
