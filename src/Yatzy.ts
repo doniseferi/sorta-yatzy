@@ -11,6 +11,7 @@ import { Fives } from './Score/ScoreByProxy/Fives';
 import { Sixes } from './Score/ScoreByProxy/Sixes';
 import { OnePair } from './Score/Pairs/OnePair';
 import { TwoPairs } from './Score/Pairs/TwoPairs';
+import { ThreeOfAKind } from './Score/ThreeOfAKind';
 
 export default class Yatzy {
   private yatzyCollection: Dice;
@@ -78,15 +79,7 @@ export default class Yatzy {
   }
 
   static three_of_a_kind(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
-    var t;
-    t = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-    t[d1.value - 1]++;
-    t[d2.value - 1]++;
-    t[d3.value - 1]++;
-    t[d4.value - 1]++;
-    t[d5.value - 1]++;
-    for (let i = 0; i < 6; i++) if (t[i] >= 3) return (i + 1) * 3;
-    return 0;
+    return new ThreeOfAKind().Score(Dice.CreateUsingDie(d1,d2,d3,d4,d5));
   }
 
   static smallStraight(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
