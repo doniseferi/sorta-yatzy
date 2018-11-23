@@ -9,7 +9,8 @@ import { Threes } from './Score/ScoreByProxy/Threes';
 import { Fours } from './Score/ScoreByProxy/Fours';
 import { Fives } from './Score/ScoreByProxy/Fives';
 import { Sixes } from './Score/ScoreByProxy/Sixes';
-import { Pair } from './Score/Pair';
+import { OnePair } from './Score/Pairs/OnePair';
+import { TwoPairs } from './Score/Pairs/TwoPairs';
 
 export default class Yatzy {
   private yatzyCollection: Dice;
@@ -57,25 +58,11 @@ export default class Yatzy {
   }
 
   static score_pair(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
-    return new Pair().Score(Dice.CreateUsingDie(d1,d2,d3,d4,d5));
+    return new OnePair().Score(Dice.CreateUsingDie(d1,d2,d3,d4,d5));
   }
 
   static two_pair(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
-    var counts = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-    counts[d1.value - 1]++;
-    counts[d2.value - 1]++;
-    counts[d3.value - 1]++;
-    counts[d4.value - 1]++;
-    counts[d5.value - 1]++;
-    var n = 0;
-    var score = 0;
-    for (let i = 0; i < 6; i += 1)
-      if (counts[6 - i - 1] >= 2) {
-        n++;
-        score += 6 - i;
-      }
-    if (n == 2) return score * 2;
-    else return 0;
+    return new TwoPairs().Score(Dice.CreateUsingDie(d1,d2,d3,d4,d5));
   }
 
   static four_of_a_kind(_1: Die, _2: Die, d3: Die, d4: Die, d5: Die): number {

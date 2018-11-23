@@ -1,4 +1,4 @@
-import assert, { AssertionError } from 'assert';
+import assert from 'assert';
 import { Dice } from '../src/Dice';
 import Die from '../src/Die';
 
