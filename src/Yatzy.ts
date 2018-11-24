@@ -11,7 +11,9 @@ import { Fives } from './Score/ScoreByProxy/Fives';
 import { Sixes } from './Score/ScoreByProxy/Sixes';
 import { OnePair } from './Score/Pairs/OnePair';
 import { TwoPairs } from './Score/Pairs/TwoPairs';
-import { ThreeOfAKind } from './Score/ThreeOfAKind';
+import { Occurrences } from './Score/Occurrences';
+import { SmallStraight } from './Score/Straights/SmallStraight';
+import { LargeStraight } from './Score/Straights/LargeStraight';
 
 export default class Yatzy {
   private yatzyCollection: Dice;
@@ -31,8 +33,8 @@ export default class Yatzy {
   }
 
   static ones(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
-    let collcetion = Dice.CreateUsingDie(d1, d2, d3, d4, d5);
-    return new Aces(new DieFaceMultiplier()).Score(collcetion);
+    let collection = Dice.CreateUsingDie(d1, d2, d3, d4, d5);
+    return new Aces(new DieFaceMultiplier()).Score(collection);
   }
 
   static twos(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
@@ -42,7 +44,6 @@ export default class Yatzy {
 
   static threes(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
     let collection = Dice.CreateUsingDie(d1, d2, d3, d4, d5);
-
     return new Threes(new DieFaceMultiplier()).Score(collection);
   }
 
@@ -59,51 +60,29 @@ export default class Yatzy {
   }
 
   static score_pair(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
-    return new OnePair().Score(Dice.CreateUsingDie(d1,d2,d3,d4,d5));
+    return new OnePair().Score(Dice.CreateUsingDie(d1, d2, d3, d4, d5));
   }
 
   static two_pair(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
-    return new TwoPairs().Score(Dice.CreateUsingDie(d1,d2,d3,d4,d5));
+    return new TwoPairs().Score(Dice.CreateUsingDie(d1, d2, d3, d4, d5));
   }
 
   static four_of_a_kind(_1: Die, _2: Die, d3: Die, d4: Die, d5: Die): number {
-    var tallies;
-    tallies = [0, 0, 0, 0, 0, 0, 0, 0];
-    tallies[_1.value - 1]++;
-    tallies[_2.value - 1]++;
-    tallies[d3.value - 1]++;
-    tallies[d4.value - 1]++;
-    tallies[d5.value - 1]++;
-    for (let i = 0; i < 6; i++) if (tallies[i] >= 4) return (i + 1) * 4;
-    return 0;
+    return new Occurrences(4).Score(Dice.CreateUsingDie(_1, _2, d3, d4, d5));
   }
 
   static three_of_a_kind(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
-    return new ThreeOfAKind().Score(Dice.CreateUsingDie(d1,d2,d3,d4,d5));
+    return new Occurrences(3).Score(Dice.CreateUsingDie(d1, d2, d3, d4, d5));
   }
 
   static smallStraight(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
-    var tallies;
-    tallies = [0, 0, 0, 0, 0, 0, 0];
-    tallies[d1.value - 1] += 1;
-    tallies[d2.value - 1] += 1;
-    tallies[d3.value - 1] += 1;
-    tallies[d4.value - 1] += 1;
-    tallies[d5.value - 1] += 1;
-    if (tallies[0] == 1 && tallies[1] == 1 && tallies[2] == 1 && tallies[3] == 1 && tallies[4] == 1) return 15;
-    return 0;
+    let collection = Dice.CreateUsingDie(d1,d2,d3,d4,d5);
+    return new SmallStraight().Score(collection);
   }
 
   static largeStraight(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
-    var tallies;
-    tallies = [0, 0, 0, 0, 0, 0, 0, 0];
-    tallies[d1.value - 1] += 1;
-    tallies[d2.value - 1] += 1;
-    tallies[d3.value - 1] += 1;
-    tallies[d4.value - 1] += 1;
-    tallies[d5.value - 1] += 1;
-    if (tallies[1] == 1 && tallies[2] == 1 && tallies[3] == 1 && tallies[4] == 1 && tallies[5] == 1) return 20;
-    return 0;
+    let collection = Dice.CreateUsingDie(d1,d2,d3,d4,d5);
+    return new LargeStraight().Score(collection);
   }
 
   static fullHouse(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
