@@ -14,6 +14,8 @@ import { TwoPairs } from './Score/Pairs/TwoPairs';
 import { Occurrences } from './Score/Occurrences';
 import { SmallStraight } from './Score/Straights/SmallStraight';
 import { LargeStraight } from './Score/Straights/LargeStraight';
+import { FullHouse } from './Score/FullHouse';
+import { Accumulator } from './Accumulate/Accumulator';
 
 export default class Yatzy {
   private yatzyCollection: Dice;
@@ -24,7 +26,7 @@ export default class Yatzy {
 
   static chance(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
     var collection = Dice.CreateUsingDie(d1, d2, d3, d4, d5);
-    return new Chance().Score(collection);
+    return new Chance(new Accumulator()).Score(collection);
   }
 
   static yatzy(...args: Die[]): number {
@@ -86,33 +88,8 @@ export default class Yatzy {
   }
 
   static fullHouse(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
-    var tallies;
-    var _2 = false;
-    var i;
-    var _2_at = 0;
-    var _3 = false;
-    var _3_at = 0;
+    let collection = Dice.CreateUsingDie(d1,d2,d3,d4,d5);
+    return new FullHouse(new Accumulator()).Score(collection);
 
-    tallies = [0, 0, 0, 0, 0, 0, 0, 0];
-    tallies[d1.value - 1] += 1;
-    tallies[d2.value - 1] += 1;
-    tallies[d3.value - 1] += 1;
-    tallies[d4.value - 1] += 1;
-    tallies[d5.value - 1] += 1;
-
-    for (i = 0; i != 6; i += 1)
-      if (tallies[i] == 2) {
-        _2 = true;
-        _2_at = i + 1;
-      }
-
-    for (i = 0; i != 6; i += 1)
-      if (tallies[i] == 3) {
-        _3 = true;
-        _3_at = i + 1;
-      }
-
-    if (_2 && _3) return _2_at * 2 + _3_at * 3;
-    else return 0;
-  }
+    }
 }
