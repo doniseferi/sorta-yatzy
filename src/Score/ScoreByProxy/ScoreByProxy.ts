@@ -1,6 +1,6 @@
 import { IScore } from "../IScore";
 import { Dice } from "../../Dice";
-import { IScoreByProxy } from "../ScoreProxy/IScoreByProxy";
+import { IScoreByProxy } from "./IScoreByProxy";
 
 export abstract class ScoreByProxy implements IScore {
     abstract Score(collection: Dice): number;

@@ -3,7 +3,7 @@ import { Dice } from './Dice';
 import { Chance } from './Score/Chance';
 import { YatzyScore } from './Score/YatzyScore';
 import { Aces } from './Score/ScoreByProxy/Aces';
-import { DieFaceMultiplier } from './Score/ScoreProxy/DieFaceMultiplier';
+import { DieFaceMultiplier } from './Score/ScoreByProxy/DieFaceMultiplier';
 import { Twos } from './Score/ScoreByProxy/Twos';
 import { Threes } from './Score/ScoreByProxy/Threes';
 import { Fours } from './Score/ScoreByProxy/Fours';
@@ -78,18 +78,18 @@ export default class Yatzy {
   }
 
   static smallStraight(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
-    let collection = Dice.CreateUsingDie(d1,d2,d3,d4,d5);
+    let collection = Dice.CreateUsingDie(d1, d2, d3, d4, d5);
     return new SmallStraight().Score(collection);
   }
 
   static largeStraight(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
-    let collection = Dice.CreateUsingDie(d1,d2,d3,d4,d5);
+    let collection = Dice.CreateUsingDie(d1, d2, d3, d4, d5);
     return new LargeStraight().Score(collection);
   }
 
   static fullHouse(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
-    let collection = Dice.CreateUsingDie(d1,d2,d3,d4,d5);
+    let collection = Dice.CreateUsingDie(d1, d2, d3, d4, d5);
     return new FullHouse(new Accumulator()).Score(collection);
 
-    }
+  }
 }
