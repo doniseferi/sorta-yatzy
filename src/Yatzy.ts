@@ -11,11 +11,12 @@ import { Fives } from './Score/ScoreByProxy/Fives';
 import { Sixes } from './Score/ScoreByProxy/Sixes';
 import { OnePair } from './Score/Pairs/OnePair';
 import { TwoPairs } from './Score/Pairs/TwoPairs';
-import { Occurrences } from './Score/Occurrences';
 import { SmallStraight } from './Score/Straights/SmallStraight';
 import { LargeStraight } from './Score/Straights/LargeStraight';
 import { FullHouse } from './Score/FullHouse';
 import { Accumulator } from './Accumulate/Accumulator';
+import { FourOfAKind } from './Score/Occurrences/FourOfAKind';
+import { ThreeOfAKind } from './Score/Occurrences/ThreeOfAKind';
 
 export default class Yatzy {
   private yatzyCollection: Dice;
@@ -70,11 +71,11 @@ export default class Yatzy {
   }
 
   static four_of_a_kind(_1: Die, _2: Die, d3: Die, d4: Die, d5: Die): number {
-    return new Occurrences(4).Score(Dice.CreateUsingDie(_1, _2, d3, d4, d5));
+    return new FourOfAKind().Score(Dice.CreateUsingDie(_1, _2, d3, d4, d5));
   }
 
   static three_of_a_kind(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
-    return new Occurrences(3).Score(Dice.CreateUsingDie(d1, d2, d3, d4, d5));
+    return new ThreeOfAKind().Score(Dice.CreateUsingDie(d1, d2, d3, d4, d5));
   }
 
   static smallStraight(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {

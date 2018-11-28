@@ -1,6 +1,6 @@
-import { IScore } from "./IScore";
-import { Dice } from "../Dice";
-import Die from "../Die";
+import { IScore } from "../IScore";
+import { Dice } from "../../Dice";
+import Die from "../../Die";
 import { isNullOrUndefined } from "util";
 
 export class Occurrences implements IScore {
@@ -20,5 +20,11 @@ export class Occurrences implements IScore {
             .dice
             .filter((v) => (v.value === die.value))
             .length;
+    }
+}
+
+export class ThreeOfAKind extends Occurrences {
+    constructor() {
+        super(4);
     }
 }
