@@ -1,7 +1,6 @@
 import Die from '../src/Die';
 import { Dice } from './Dice';
 import { Chance } from './Score/Chance';
-import { YatzyScore } from './Score/YatzyScore';
 import { Aces } from './Score/ScoreByProxy/Aces';
 import { DieFaceMultiplier } from './Score/ScoreByProxy/DieFaceMultiplier';
 import { Twos } from './Score/ScoreByProxy/Twos';
@@ -17,6 +16,7 @@ import { FullHouse } from './Score/FullHouse';
 import { Accumulator } from './Accumulate/Accumulator';
 import { FourOfAKind } from './Score/Occurrences/FourOfAKind';
 import { ThreeOfAKind } from './Score/Occurrences/ThreeOfAKind';
+import { YatzyScore } from './Score/YatzyScore';
 
 export default class Yatzy {
   private yatzyCollection: Dice;

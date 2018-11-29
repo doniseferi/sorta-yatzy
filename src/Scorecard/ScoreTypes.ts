@@ -1,4 +1,4 @@
-enum ScoreTypes {
+export enum ScoreTypes {
     Chance = 0,
     Aces,
     Twos,
@@ -13,5 +13,5 @@ enum ScoreTypes {
     SmallStraight,
     LargeStraight,
     FullHouse,
-    Yahtzee
+    Yatzy
 }
