@@ -3,9 +3,13 @@ import Die from '../src/Die';
 
 describe("Die", () => {
     it('Die throws an exception if invalid state is attempted', () => {
+        // @ts-ignore
         assert.throws(() => new Die());
+        // @ts-ignore
         assert.throws(() => new Die(null));
+        // @ts-ignore
         assert.throws(() => new Die(undefined));
+        // @ts-ignore
         assert.throws(() => new Die('slimmy'));
     })
 })
