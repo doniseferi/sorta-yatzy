@@ -3,7 +3,7 @@ import { Dice } from "../../Dice";
 import { IScoreByProxy } from "./IScoreByProxy";
 
 export abstract class ScoreByProxy implements IScore {
-    abstract Score(collection: Dice): number;
+    abstract invoke(collection: Dice): number;
 
     protected readonly proxy: IScoreByProxy;
 

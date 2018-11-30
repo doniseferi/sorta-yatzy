@@ -3,7 +3,7 @@ import { Dice } from "../../Dice";
 
 export class Fours extends ScoreByProxy {
 
-    Score(collection: Dice): number {
-        return this.proxy.Score(collection, 4);
+    invoke(collection: Dice): number {
+        return this.proxy.invoke(collection, 4);
     }
 }

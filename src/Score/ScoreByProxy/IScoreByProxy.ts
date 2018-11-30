@@ -1,5 +1,5 @@
 import { Dice } from "../../Dice";
 
 export interface IScoreByProxy {
-    Score(collection: Dice, score: number): number;
+    invoke(collection: Dice, score: number): number;
 }

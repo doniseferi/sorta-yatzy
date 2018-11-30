@@ -1,13 +1,13 @@
 import { Dice } from "../Dice";
 
 export interface ILowerSection {
-    OnePair(dice: Dice): number;
-    TwoPairs(dice: Dice): number;
-    ThreeOfAKind(dice: Dice): number;
-    FourOfAKind(dice: Dice): number;
-    SmallStraight(dice: Dice): number;
-    LargeStraight(dice: Dice): number;
-    FullHouse(dice: Dice): number;
-    Yatzy(dice: Dice): number;
-    Chance(dice: Dice): number;
+    onePair(dice: Dice): number;
+    twoPairs(dice: Dice): number;
+    threeOfAKind(dice: Dice): number;
+    fourOfAKind(dice: Dice): number;
+    smallStraight(dice: Dice): number;
+    largeStraight(dice: Dice): number;
+    fullHouse(dice: Dice): number;
+    yatzy(dice: Dice): number;
+    chance(dice: Dice): number;
 }

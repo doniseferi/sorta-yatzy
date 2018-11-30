@@ -3,7 +3,7 @@ import { Dice } from "../../Dice";
 
 export abstract class Pair implements IScore {
     
-    abstract Score(collection: Dice): number;
+    abstract invoke(collection: Dice): number;
 
     protected duplicates(collection: Dice) : number[] {
         return [...new Set(collection.dice

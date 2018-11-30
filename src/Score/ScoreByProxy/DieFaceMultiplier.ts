@@ -2,7 +2,7 @@ import { Dice } from '../../Dice';
 import { IScoreByProxy } from './IScoreByProxy';
 
 export class DieFaceMultiplier implements IScoreByProxy {
-    Score(collection: Dice, score: number): number {
+    invoke(collection: Dice, score: number): number {
         return (
             (collection
                 .dice

@@ -3,7 +3,7 @@ import { Dice } from '../Dice';
 
 export class YatzyScore implements IScore {
 
-    Score(collection: Dice): number {
+    invoke(collection: Dice): number {
         const yatzyScore = 50;
 
         let numberOfUniqueDie = new Set(collection.dice.map(x => x.value)).size;

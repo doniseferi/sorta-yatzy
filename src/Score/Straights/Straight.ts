@@ -21,7 +21,7 @@ export abstract class Straight implements IScore {
         }
     }
 
-    Score(collection: Dice): number {
+    invoke(collection: Dice): number {
         let die = collection.dice.map(x => x.value);
         let uniqueValues = [...new Set(die)];
         return (this.isStraight(uniqueValues))

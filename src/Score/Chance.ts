@@ -7,7 +7,7 @@ export class Chance implements IScore {
     constructor(private readonly accumulate: IAccumulateDice) {
     }
 
-    Score(collection: Dice): number {
-        return this.accumulate.Sum(collection);
+    invoke(collection: Dice): number {
+        return this.accumulate.sum(collection);
     }
 }

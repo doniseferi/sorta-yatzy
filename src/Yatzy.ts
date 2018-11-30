@@ -9,76 +9,76 @@ export default class Yatzy {
 
   chance(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
     var collection = Dice.CreateUsingDie(d1, d2, d3, d4, d5);
-    return this.scoreCard.Chance(collection);
+    return this.scoreCard.chance(collection);
   }
 
   yatzy(...args: Die[]): number {
     let collection = Dice.CreateUsingDieCollection(args);
-    return this.scoreCard.Yatzy(collection);
+    return this.scoreCard.yatzy(collection);
   }
 
   ones(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
     let collection = Dice.CreateUsingDie(d1, d2, d3, d4, d5);
-    return this.scoreCard.Aces(collection);
+    return this.scoreCard.aces(collection);
   }
 
   twos(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
     let collection = Dice.CreateUsingDie(d1, d2, d3, d4, d5);
-    return this.scoreCard.Twos(collection);
+    return this.scoreCard.twos(collection);
   }
 
   threes(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
     let collection = Dice.CreateUsingDie(d1, d2, d3, d4, d5);
-    return this.scoreCard.Threes(collection);
+    return this.scoreCard.threes(collection);
   }
 
   fours(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
     let collection = Dice.CreateUsingDie(d1, d2, d3, d4, d5);
-    return this.scoreCard.Fours(collection);
+    return this.scoreCard.fours(collection);
   }
 
   fives(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
     let collection = Dice.CreateUsingDie(d1, d2, d3, d4, d5);
-    return this.scoreCard.Fives(collection);
+    return this.scoreCard.fives(collection);
   }
 
   sixes(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
     let collection = Dice.CreateUsingDie(d1, d2, d3, d4, d5);
-    return this.scoreCard.Sixes(collection);
+    return this.scoreCard.sixes(collection);
   }
 
   score_pair(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
     let collection = Dice.CreateUsingDie(d1, d2, d3, d4, d5);
-    return this.scoreCard.OnePair(collection);
+    return this.scoreCard.onePair(collection);
   }
 
   two_pair(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
     let collection = Dice.CreateUsingDie(d1, d2, d3, d4, d5);
-    return this.scoreCard.TwoPairs(collection);
+    return this.scoreCard.twoPairs(collection);
   }
 
   four_of_a_kind(_1: Die, _2: Die, d3: Die, d4: Die, d5: Die): number {
     let collection = Dice.CreateUsingDie(_1, _2, d3, d4, d5);
-    return this.scoreCard.FourOfAKind(collection);
+    return this.scoreCard.fourOfAKind(collection);
   }
 
   three_of_a_kind(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
     let collection = Dice.CreateUsingDie(d1, d2, d3, d4, d5);
-    return this.scoreCard.ThreeOfAKind(collection);
+    return this.scoreCard.threeOfAKind(collection);
   }
 
   smallStraight(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
     let collection = Dice.CreateUsingDie(d1, d2, d3, d4, d5);
-    return this.scoreCard.SmallStraight(collection);
+    return this.scoreCard.smallStraight(collection);
   }
 
   largeStraight(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
     let collection = Dice.CreateUsingDie(d1, d2, d3, d4, d5);
-    return this.scoreCard.LargeStraight(collection);
+    return this.scoreCard.largeStraight(collection);
   }
 
   fullHouse(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
     let collection = Dice.CreateUsingDie(d1, d2, d3, d4, d5);
-    return this.scoreCard.FullHouse(collection);
+    return this.scoreCard.fullHouse(collection);
   }
 }

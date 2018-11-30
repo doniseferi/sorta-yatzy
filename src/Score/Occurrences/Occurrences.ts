@@ -8,7 +8,7 @@ export class Occurrences implements IScore {
     constructor(private xOfAKind: number) {
     }
 
-    Score(collection: Dice): number {
+    invoke(collection: Dice): number {
         let die = collection.dice.find(x => this.getOccurrences(collection, x) >= this.xOfAKind);
         return (!isNullOrUndefined(die))
             ? die.value * this.xOfAKind
