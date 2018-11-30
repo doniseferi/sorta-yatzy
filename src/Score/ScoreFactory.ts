@@ -1,7 +1,6 @@
 import { IScore } from "./IScore";
 import { IScoreFactory } from "./IScoreFactory";
 import { Chance } from "./Chance";
-import { Accumulator } from "../Accumulate/Accumulator";
 import { Aces } from "./ScoreByProxy/Aces";
 import { DieFaceMultiplier } from "./ScoreByProxy/DieFaceMultiplier";
 import { Twos } from "./ScoreByProxy/Twos";
@@ -18,6 +17,7 @@ import { Fours } from "./ScoreByProxy/Fours";
 import { Fives } from "./ScoreByProxy/Fives";
 import { Sixes } from "./ScoreByProxy/Sixes";
 import { ScoreTypes } from "../Scorecard/ScoreTypes";
+import { Accumulator } from "../Accumulate/Accumulator";
 
 export class ScoreFactory implements IScoreFactory {
 

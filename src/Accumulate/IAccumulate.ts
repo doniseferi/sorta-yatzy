@@ -1,5 +1,5 @@
 import { Dice } from "../Dice";
 
-export interface IAccumulateDice {
+export interface IAccumulate {
     sum(collection: Dice): number;
 }

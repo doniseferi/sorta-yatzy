@@ -1,7 +1,7 @@
-import { IAccumulateDice } from "./IAccumulate";
+import { IAccumulate } from "./IAccumulate";
 import { Dice } from "../Dice";
 
-export class Accumulator implements IAccumulateDice {
+export class Accumulator implements IAccumulate {
     sum(collection: Dice) {
         return (collection.dice
             .map(x => x.value)
