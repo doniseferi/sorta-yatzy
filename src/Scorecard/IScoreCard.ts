@@ -1,6 +1,6 @@
 import { Dice } from "../Dice";
 
-export interface ISection {
+export interface IScoreCard {
     Aces(dice: Dice): number;
     Twos(dice: Dice): number;
     Threes(dice: Dice): number;

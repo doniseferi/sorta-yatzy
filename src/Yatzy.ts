@@ -17,80 +17,82 @@ import { Accumulator } from './Accumulate/Accumulator';
 import { FourOfAKind } from './Score/Occurrences/FourOfAKind';
 import { ThreeOfAKind } from './Score/Occurrences/ThreeOfAKind';
 import { YatzyScore } from './Score/YatzyScore';
+import { IScoreCard } from './Scorecard/IScoreCard';
 
 export default class Yatzy {
-  private yatzyCollection: Dice;
 
-  constructor(d1: Die, d2: Die, d3: Die, d4: Die, _5: Die) {
-    this.yatzyCollection = Dice.CreateUsingDie(d1, d2, d3, d4, _5);
+  constructor(private readonly scoreCard: IScoreCard) {
   }
 
-  static chance(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
+  chance(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
     var collection = Dice.CreateUsingDie(d1, d2, d3, d4, d5);
     return new Chance(new Accumulator()).Score(collection);
   }
 
-  static yatzy(...args: Die[]): number {
+  yatzy(...args: Die[]): number {
     let collection = Dice.CreateUsingDieCollection(args);
     return new YatzyScore().Score(collection);
   }
 
-  static ones(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
+  ones(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
     let collection = Dice.CreateUsingDie(d1, d2, d3, d4, d5);
     return new Aces(new DieFaceMultiplier()).Score(collection);
   }
 
-  static twos(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
+  twos(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
     let collection = Dice.CreateUsingDie(d1, d2, d3, d4, d5);
     return new Twos(new DieFaceMultiplier()).Score(collection);
   }
 
-  static threes(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
+  threes(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
     let collection = Dice.CreateUsingDie(d1, d2, d3, d4, d5);
     return new Threes(new DieFaceMultiplier()).Score(collection);
   }
 
-  fours(): number {
-    return new Fours(new DieFaceMultiplier()).Score(this.yatzyCollection);
+  fours(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
+    let yatzyCollection = Dice.CreateUsingDie(d1, d2, d3, d4, d5);
+    return new Fours(new DieFaceMultiplier()).Score(yatzyCollection);
   }
 
-  fives(): number {
-    return new Fives(new DieFaceMultiplier()).Score(this.yatzyCollection);
+  fives(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
+    let yatzyCollection = Dice.CreateUsingDie(d1, d2, d3, d4, d5);
+    return new Fives(new DieFaceMultiplier()).Score(yatzyCollection);
   }
 
-  sixes(): number {
-    return new Sixes(new DieFaceMultiplier()).Score(this.yatzyCollection);
+  sixes(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
+    let yatzyCollection = Dice.CreateUsingDie(d1, d2, d3, d4, d5);
+    return new Sixes(new DieFaceMultiplier()).Score(yatzyCollection);
   }
 
-  static score_pair(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
+  score_pair(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
     return new OnePair().Score(Dice.CreateUsingDie(d1, d2, d3, d4, d5));
   }
 
-  static two_pair(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
+  two_pair(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
     return new TwoPairs().Score(Dice.CreateUsingDie(d1, d2, d3, d4, d5));
   }
 
-  static four_of_a_kind(_1: Die, _2: Die, d3: Die, d4: Die, d5: Die): number {
+  four_of_a_kind(_1: Die, _2: Die, d3: Die, d4: Die, d5: Die): number {
     return new FourOfAKind().Score(Dice.CreateUsingDie(_1, _2, d3, d4, d5));
   }
 
-  static three_of_a_kind(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
-    return new ThreeOfAKind().Score(Dice.CreateUsingDie(d1, d2, d3, d4, d5));
+  three_of_a_kind(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
+    let collection = Dice.CreateUsingDie(d1, d2, d3, d4, d5);
+    return new ThreeOfAKind().Score(collection);
   }
 
-  static smallStraight(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
+  smallStraight(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
     let collection = Dice.CreateUsingDie(d1, d2, d3, d4, d5);
     return new SmallStraight().Score(collection);
   }
 
-  static largeStraight(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
+  largeStraight(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
     let collection = Dice.CreateUsingDie(d1, d2, d3, d4, d5);
     return new LargeStraight().Score(collection);
   }
 
-  static fullHouse(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
+  fullHouse(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
     let collection = Dice.CreateUsingDie(d1, d2, d3, d4, d5);
     return new FullHouse(new Accumulator()).Score(collection);
-
   }
 }
