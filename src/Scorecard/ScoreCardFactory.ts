@@ -24,8 +24,6 @@ export class ScoreCardFactory implements IScoreCardFactory {
     Create(landingOn: ScoreTypes): IScore {
 
         switch (landingOn) {
-            case ScoreTypes.Chance:
-                return new Chance(new Accumulator());
             case ScoreTypes.Aces:
                 return new Aces(new DieFaceMultiplier());
             case ScoreTypes.Twos:
@@ -54,6 +52,8 @@ export class ScoreCardFactory implements IScoreCardFactory {
                 return new FullHouse(new Accumulator());
             case ScoreTypes.Yatzy:
                 return new YatzyScore();
+            case ScoreTypes.Chance:
+                return new Chance(new Accumulator());
             default: throw new Error("Can not recongise score card type.")
         }
     }

@@ -1,6 +1,5 @@
 export enum ScoreTypes {
-    Chance = 0,
-    Aces,
+    Aces = 0,
     Twos,
     Threes,
     Fours,
@@ -13,5 +12,6 @@ export enum ScoreTypes {
     SmallStraight,
     LargeStraight,
     FullHouse,
-    Yatzy
+    Yatzy,
+    Chance
 }
