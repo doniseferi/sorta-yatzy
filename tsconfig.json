@@ -1,5 +1,9 @@
 {
   "compilerOptions": {
+    "lib": [
+      "es2017",
+      "dom"
+    ],
     "target": "es2017",
     "module": "commonjs",
     "declaration": false,
@@ -7,10 +11,22 @@
     "rootDir": ".",
     "strict": true,
     "noUnusedLocals": true,
-    "types": ["node", "mocha"],
+    "types": [
+      "node",
+      "mocha",
+      "reflect-metadata"
+    ],
     "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
   },
-  "include": ["src", "test"],
-  "exclude": ["node_modules", "build"]
+  "include": [
+    "src",
+    "test"
+  ],
+  "exclude": [
+    "node_modules",
+    "build"
+  ]
 }

@@ -6,7 +6,9 @@
     "email": "lorensleon@gmail.org"
   },
   "dependencies": {
-    "@types/node": "*"
+    "@types/node": "*",
+    "inversify": "^5.0.1",
+    "reflect-metadata": "^0.1.12"
   },
   "devDependencies": {
     "@types/mocha": "^5.2.0",

@@ -1,5 +1,16 @@
 import assert from 'assert';
 import Die from '../src/Die';
+import { myContainer } from "../src/ioc-example/inversify.config";
+import { TYPES } from "../src/ioc-example/types";
+import { Warrior } from "../src/ioc-example/interfaces";
+
+describe("Inversify", () => {
+    it(" ", () => {
+        const ninja = myContainer.get<Warrior>(TYPES.Warrior);
+        console.log(ninja.fight());
+        console.log(ninja.sneak());
+    })
+})
 
 describe("Die", () => {
     it('Die throws an exception if invalid state is attempted', () => {
