@@ -1,6 +1,8 @@
 import { IAccumulate } from "./IAccumulate";
 import { Dice } from "../Dice";
+import { injectable } from "inversify";
 
+@injectable()
 export class Accumulator implements IAccumulate {
     sum(collection: Dice) {
         return (collection.dice
