@@ -1,6 +1,7 @@
 import { IAccumulate } from "./IAccumulate";
 import { Dice } from "../Dice";
 import { injectable } from "inversify";
+import 'reflect-metadata';
 
 @injectable()
 export class Accumulator implements IAccumulate {

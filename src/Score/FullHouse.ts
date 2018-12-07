@@ -3,6 +3,7 @@ import { Dice } from "../Dice";
 import { IAccumulate } from "../Accumulate/IAccumulate";
 import { TYPES } from "../Ioc/types";
 import { inject } from "inversify";
+import "reflect-metadata";
 
 export class FullHouse implements IScore {
 

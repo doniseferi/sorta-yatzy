@@ -1,14 +1,17 @@
 import assert from 'assert';
 import Die from '../src/Die';
 import Yatzy from '../src/Yatzy';
-import { YatzyFactory } from '../src/YatzyFactory';
+import { container } from '../src/Ioc/inversify.config';
+import { IYatzyFactory } from '../src/IYatzyFactory';
+import { TYPES } from '../src/ioc-example/types';
 
 describe('Yatzy', () => {
 
   let yatzy: Yatzy;
 
   before('Initialize Yatzy', () => {
-    yatzy = new YatzyFactory().Create();
+    
+    yatzy = container.get<IYatzyFactory>(TYPES.IYatzyFactory).Create();
   });
 
   describe('Chance', () => {

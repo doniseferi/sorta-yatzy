@@ -1,18 +1,17 @@
 import Yatzy from "./Yatzy";
-import { IScoreCardFactory } from "./Scorecard/IScoreFactory";
-import { ScoreCardFactory } from "./Scorecard/ScoreCardFactory";
+import { inject, injectable } from "inversify";
+import { TYPES } from "./Ioc/types";
+import { IYatzyFactory } from "./IYatzyFactory";
 import { IScoreCard } from "./Scorecard/IScoreCard";
+import { IScoreCardFactory } from "./Scorecard/IScoreCardFactory";
 
-export interface IYatzyFactory {
-    Create(): Yatzy;
-}
+@injectable()
 export class YatzyFactory implements IYatzyFactory {
 
     private readonly _scoreCard: IScoreCard;
-    constructor(scoreCardFactory?: IScoreCardFactory) {
-        scoreCardFactory == null
-            ? this._scoreCard = new ScoreCardFactory().Create()
-            : this._scoreCard = scoreCardFactory.Create();
+
+    constructor(@inject(TYPES.IScoreCardFactory) scoreCardFactory: IScoreCardFactory) {
+        this._scoreCard = scoreCardFactory.Create();
     }
 
     Create(): Yatzy {

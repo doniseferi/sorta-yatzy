@@ -17,8 +17,12 @@ import { Fours } from "./ScoreByProxy/Fours";
 import { Fives } from "./ScoreByProxy/Fives";
 import { Sixes } from "./ScoreByProxy/Sixes";
 import { ScoreTypes } from "../Scorecard/ScoreTypes";
-import { Accumulator } from "../Accumulate/Accumulator";
+import { injectable } from "inversify";
+import { container } from "../Ioc/inversify.config";
+import { TYPES } from "../Ioc/types";
+import { IAccumulate } from "../Accumulate/IAccumulate";
 
+@injectable()
 export class ScoreFactory implements IScoreFactory {
 
     create(landingOn: ScoreTypes): IScore {
@@ -49,11 +53,11 @@ export class ScoreFactory implements IScoreFactory {
             case ScoreTypes.LargeStraight:
                 return new LargeStraight();
             case ScoreTypes.FullHouse:
-                return new FullHouse(new Accumulator());
+                return new FullHouse(container.get<IAccumulate>(TYPES.IAccumulate));
             case ScoreTypes.Yatzy:
                 return new YatzyScore();
             case ScoreTypes.Chance:
-                return new Chance(new Accumulator());
+                return new Chance(container.get<IAccumulate>(TYPES.IAccumulate));
             default: throw new Error("Can not recongise score card type.")
         }
     }

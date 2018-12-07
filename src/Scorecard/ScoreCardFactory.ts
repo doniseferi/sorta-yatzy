@@ -1,14 +1,16 @@
 import { IScoreFactory } from "../Score/IScoreFactory";
 import { ShortCard } from "./ScoreCard";
-import { IScoreCardFactory } from "./IScoreFactory";
+import { IScoreCardFactory } from "./IScoreCardFactory";
 import { IScoreCard } from "./IScoreCard";
 import { ScoreFactory } from "../Score/ScoreFactory";
+import { injectable, inject } from "inversify";
+import { TYPES } from "../Ioc/types";
 
+@injectable()
 export class ScoreCardFactory implements IScoreCardFactory {
 
     private readonly _scoreFactory: IScoreFactory;
-    constructor(scoreFactory?: IScoreFactory) {
-        //TODO: use intesifyjs for ioc and dip inv con
+    constructor(@inject(TYPES.IScoreFactory) scoreFactory: IScoreFactory) {
         scoreFactory == null
             ? this._scoreFactory = new ScoreFactory()
             : this._scoreFactory = scoreFactory;
