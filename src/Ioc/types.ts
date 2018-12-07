@@ -1,9 +1,9 @@
 const TYPES = {
-    Warrior: Symbol.for("Warrior"),
-    Weapon: Symbol.for("Weapon"),
-    ThrowableWeapon: Symbol.for("ThrowableWeapon")
+    // Warrior: Symbol.for("Warrior"),
+    // Weapon: Symbol.for("Weapon"),
+    // ThrowableWeapon: Symbol.for("ThrowableWeapon")
+    IAccumulate: Symbol.for("IAccumulate")
 };
 
-//Accumulator implements IAccumulate
 
 export { TYPES };

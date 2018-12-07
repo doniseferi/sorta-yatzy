@@ -2,12 +2,16 @@
 
 import { Container } from "inversify";
 import { TYPES } from "./types";
-import { Warrior, Weapon, ThrowableWeapon } from "./interfaces";
+import { IWarrior, IWeapon, IThrowableWeapon } from "./interfaces";
 import { Ninja, Katana, Shuriken } from "./entities";
 
 const myContainer = new Container();
-myContainer.bind<Warrior>(TYPES.Warrior).to(Ninja);
-myContainer.bind<Weapon>(TYPES.Weapon).to(Katana);
-myContainer.bind<ThrowableWeapon>(TYPES.ThrowableWeapon).to(Shuriken);
+// myContainer.bind<IWarrior>(TYPES.IWarrior).to(Ninja);
+myContainer.bind<IWarrior>(TYPES.IWarrior).to(Ninja);
+myContainer.bind<IWeapon>(TYPES.IWeapon).to(Katana);
+myContainer.bind<IThrowableWeapon>(TYPES.IThrowableWeapon).to(Shuriken);
 
 export { myContainer };
+
+//TYPES is used to decorate and declare interfaces that are going to be injectd
+//CONTAINER is where the TYPES are registered to their concerete typesc

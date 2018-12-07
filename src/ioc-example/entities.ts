@@ -2,32 +2,32 @@
 
 import { injectable, inject } from "inversify";
 import "reflect-metadata";
-import { Weapon, ThrowableWeapon, Warrior } from "./interfaces"
+import { IWeapon, IThrowableWeapon, IWarrior } from "./interfaces"
 import { TYPES } from "./types";
 
 @injectable()
-class Katana implements Weapon {
+class Katana implements IWeapon {
     public hit() {
         return "cut!";
     }
 }
 
 @injectable()
-class Shuriken implements ThrowableWeapon {
+class Shuriken implements IThrowableWeapon {
     public throw() {
         return "hit!";
     }
 }
 
 @injectable()
-class Ninja implements Warrior {
+class Ninja implements IWarrior {
 
-    private _katana: Weapon;
-    private _shuriken: ThrowableWeapon;
+    private _katana: IWeapon;
+    private _shuriken: IThrowableWeapon;
 
     public constructor(
-        @inject(TYPES.Weapon) katana: Weapon,
-        @inject(TYPES.ThrowableWeapon) shuriken: ThrowableWeapon) {
+        @inject(TYPES.IWeapon) katana: IWeapon,
+        @inject(TYPES.IThrowableWeapon) shuriken: IThrowableWeapon) {
         this._katana = katana;
         this._shuriken = shuriken;
     }

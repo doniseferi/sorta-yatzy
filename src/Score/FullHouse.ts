@@ -1,10 +1,12 @@
 import { IScore } from "./IScore";
 import { Dice } from "../Dice";
 import { IAccumulate } from "../Accumulate/IAccumulate";
+import { TYPES } from "../Ioc/types";
+import { inject } from "inversify";
 
 export class FullHouse implements IScore {
 
-    constructor(private readonly accumulate: IAccumulate) {
+    constructor(@inject(TYPES.IAccumulate) private readonly accumulate: IAccumulate) {
     }
 
     invoke(collection: Dice): number {

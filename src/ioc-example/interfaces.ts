@@ -1,12 +1,12 @@
-export interface Warrior {
+export interface IWarrior {
     fight(): string;
     sneak(): string;
 }
 
-export interface Weapon {
+export interface IWeapon {
     hit(): string;
 }
 
-export interface ThrowableWeapon {
+export interface IThrowableWeapon {
     throw(): string;
 }

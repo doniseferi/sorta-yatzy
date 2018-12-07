@@ -1,7 +1,7 @@
 const TYPES = {
-    Warrior: Symbol.for("Warrior"),
-    Weapon: Symbol.for("Weapon"),
-    ThrowableWeapon: Symbol.for("ThrowableWeapon")
+    IWarrior: Symbol.for("Warror"),
+    IWeapon: Symbol.for("Weapon"),
+    IThrowableWeapon: Symbol.for("ThrowableWeapon")
 };
 
 export { TYPES };
