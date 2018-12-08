@@ -3,7 +3,7 @@ import Die from '../src/Die';
 import Yatzy from '../src/Yatzy';
 import { container } from '../src/Ioc/inversify.config';
 import { IYatzyFactory } from '../src/IYatzyFactory';
-import { TYPES } from '../src/ioc-example/types';
+import { TYPES } from '../src/Ioc/types';
 
 describe('Yatzy', () => {
 

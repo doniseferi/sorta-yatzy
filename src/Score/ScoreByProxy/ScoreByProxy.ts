@@ -1,10 +1,9 @@
 import { IScore } from "../IScore";
 import { Dice } from "../../Dice";
 import { IScoreByProxy } from "./IScoreByProxy";
-import { inject, injectable } from "inversify";
+import { inject } from "inversify";
 import { TYPES } from "../../Ioc/types";
 
-@injectable()
 export abstract class ScoreByProxy implements IScore {
     abstract invoke(collection: Dice): number;
 
