@@ -2,68 +2,41 @@ import { IScoreCard } from "./IScoreCard";
 import { Dice } from "../Dice";
 import { IScoreFactory } from "../Score/IScoreFactory";
 import { ScoreTypes } from "./ScoreTypes";
+import { inject } from "inversify";
+import { TYPES } from "../Ioc/types";
 
 export class ShortCard implements IScoreCard {
 
-    constructor(private readonly scoreFactory: IScoreFactory) {
+    constructor(@inject(TYPES.IScoreFactory) private readonly scoreFactory: IScoreFactory) {
     }
 
-    aces(dice: Dice): number {
-        return this.scoreFactory.create(ScoreTypes.Aces).invoke(dice);
-    }
-    twos(dice: Dice): number {
-        return this.scoreFactory.create(ScoreTypes.Twos).invoke(dice);
-    }
+    aces = (dice: Dice) : number => this.scoreFactory.create(ScoreTypes.Aces).invoke(dice);
 
-    threes(dice: Dice): number {
-        return this.scoreFactory.create(ScoreTypes.Threes).invoke(dice);
-    }
+    twos = (dice: Dice): number => this.scoreFactory.create(ScoreTypes.Twos).invoke(dice);
 
-    fours(dice: Dice): number {
-        return this.scoreFactory.create(ScoreTypes.Fours).invoke(dice);
-    }
+    threes = (dice: Dice): number => this.scoreFactory.create(ScoreTypes.Threes).invoke(dice);
 
-    fives(dice: Dice): number {
-        return this.scoreFactory.create(ScoreTypes.Fives).invoke(dice);
-    }
+    fours = (dice: Dice): number => this.scoreFactory.create(ScoreTypes.Fours).invoke(dice);
 
-    sixes(dice: Dice): number {
-        return this.scoreFactory.create(ScoreTypes.Sixes).invoke(dice);
-    }
+    fives = (dice: Dice): number => this.scoreFactory.create(ScoreTypes.Fives).invoke(dice);
 
-    onePair(dice: Dice): number {
-        return this.scoreFactory.create(ScoreTypes.OnePair).invoke(dice);
-    }
+    sixes = (dice: Dice): number => this.scoreFactory.create(ScoreTypes.Sixes).invoke(dice);
 
-    twoPairs(dice: Dice): number {
-        return this.scoreFactory.create(ScoreTypes.TwoPairs).invoke(dice);
-    }
+    onePair = (dice: Dice): number => this.scoreFactory.create(ScoreTypes.OnePair).invoke(dice);
 
-    threeOfAKind(dice: Dice): number {
-        return this.scoreFactory.create(ScoreTypes.ThreeOfAKind).invoke(dice);
-    }
+    twoPairs = (dice: Dice): number => this.scoreFactory.create(ScoreTypes.TwoPairs).invoke(dice);
 
-    fourOfAKind(dice: Dice): number {
-        return this.scoreFactory.create(ScoreTypes.FourOfAKind).invoke(dice);
-    }
+    threeOfAKind = (dice: Dice): number => this.scoreFactory.create(ScoreTypes.ThreeOfAKind).invoke(dice);
 
-    smallStraight(dice: Dice): number {
-        return this.scoreFactory.create(ScoreTypes.SmallStraight).invoke(dice);
-    }
+    fourOfAKind = (dice: Dice): number => this.scoreFactory.create(ScoreTypes.FourOfAKind).invoke(dice);
 
-    largeStraight(dice: Dice): number {
-        return this.scoreFactory.create(ScoreTypes.LargeStraight).invoke(dice);
-    }
+    smallStraight = (dice: Dice): number => this.scoreFactory.create(ScoreTypes.SmallStraight).invoke(dice);
 
-    fullHouse(dice: Dice): number {
-        return this.scoreFactory.create(ScoreTypes.FullHouse).invoke(dice);
-    }
+    largeStraight = (dice: Dice): number => this.scoreFactory.create(ScoreTypes.LargeStraight).invoke(dice);
 
-    yatzy(dice: Dice): number {
-        return this.scoreFactory.create(ScoreTypes.Yatzy).invoke(dice);
-    }
+    fullHouse = (dice: Dice): number => this.scoreFactory.create(ScoreTypes.FullHouse).invoke(dice);
 
-    chance(dice: Dice): number {
-        return this.scoreFactory.create(ScoreTypes.Chance).invoke(dice);
-    }
+    yatzy = (dice: Dice): number => this.scoreFactory.create(ScoreTypes.Yatzy).invoke(dice);
+
+    chance = (dice: Dice): number => this.scoreFactory.create(ScoreTypes.Chance).invoke(dice);
 }
