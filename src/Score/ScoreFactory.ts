@@ -2,7 +2,6 @@ import { IScore } from "./IScore";
 import { IScoreFactory } from "./IScoreFactory";
 import { Chance } from "./Chance";
 import { Aces } from "./ScoreByProxy/Aces";
-import { DieFaceMultiplier } from "./ScoreByProxy/DieFaceMultiplier";
 import { Twos } from "./ScoreByProxy/Twos";
 import { OnePair } from "./Pairs/OnePair";
 import { TwoPairs } from "./Pairs/TwoPairs";
@@ -26,21 +25,30 @@ import { IScoreByProxy } from "./ScoreByProxy/IScoreByProxy";
 @injectable()
 export class ScoreFactory implements IScoreFactory {
 
+    private readonly _scoreByProxy: IScoreByProxy;
+
+    private readonly _accumulate: IAccumulate;
+
+    constructor() {
+        this._scoreByProxy = container.get<IScoreByProxy>(TYPES.IScoreByProxy);
+        this._accumulate = container.get<IAccumulate>(TYPES.IAccumulate);
+    }
+
     create(landingOn: ScoreTypes): IScore {
 
         switch (landingOn) {
             case ScoreTypes.Aces:
-                return container.get<Aces>(TYPES.Aces);
+                return new Aces(this._scoreByProxy);
             case ScoreTypes.Twos:
-                return new Twos(container.get<IScoreByProxy>(TYPES.IScoreByProxy));
+                return new Twos(this._scoreByProxy);
             case ScoreTypes.Threes:
-                return new Threes(container.get<IScoreByProxy>(TYPES.IScoreByProxy));
+                return new Threes(this._scoreByProxy);
             case ScoreTypes.Fours:
-                return new Fours(container.get<IScoreByProxy>(TYPES.IScoreByProxy));
+                return new Fours(this._scoreByProxy);
             case ScoreTypes.Fives:
-                return new Fives(container.get<IScoreByProxy>(TYPES.IScoreByProxy));
+                return new Fives(this._scoreByProxy);
             case ScoreTypes.Sixes:
-                return new Sixes(container.get<IScoreByProxy>(TYPES.IScoreByProxy));
+                return new Sixes(this._scoreByProxy);
             case ScoreTypes.OnePair:
                 return new OnePair();
             case ScoreTypes.TwoPairs:
@@ -54,11 +62,11 @@ export class ScoreFactory implements IScoreFactory {
             case ScoreTypes.LargeStraight:
                 return new LargeStraight();
             case ScoreTypes.FullHouse:
-                return new FullHouse(container.get<IAccumulate>(TYPES.IAccumulate));
+                return new FullHouse(this._accumulate);
             case ScoreTypes.Yatzy:
                 return new YatzyScore();
             case ScoreTypes.Chance:
-                return new Chance(container.get<IAccumulate>(TYPES.IAccumulate));
+                return new Chance(this._accumulate);
             default: throw new Error("Can not recongise score card type.")
         }
     }
