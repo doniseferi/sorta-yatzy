@@ -1,10 +1,16 @@
 import assert from 'assert';
-import { ScoreFactory } from "../src/Score/ScoreFactory";
 import { ScoreTypes } from '../src/Scorecard/ScoreTypes';
+import { TYPES } from '../src/Ioc/types';
+import { container } from '../src/Ioc/inversify.config';
+import { IScoreFactory } from '../src/Score/IScoreFactory';
 
 describe("ScoreCardFactory should ", () => {
 
-    let _scoreCardFactory = new ScoreFactory();
+    let _scoreCardFactory: IScoreFactory;
+
+    before('Initialize ScoreFactory', () => {
+        _scoreCardFactory = container.get<IScoreFactory>(TYPES.IScoreFactory);
+    });
 
     it('return Chance when Chance passed in.', () => {
         let score = _scoreCardFactory.create(ScoreTypes.Chance);

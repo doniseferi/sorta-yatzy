@@ -11,7 +11,7 @@ export class YatzyFactory implements IYatzyFactory {
     private readonly _scoreCard: IScoreCard;
 
     constructor(@inject(TYPES.IScoreCardFactory) scoreCardFactory: IScoreCardFactory) {
-        this._scoreCard = scoreCardFactory.Create();
+        this._scoreCard = scoreCardFactory.create();
     }
 
     Create(): Yatzy {

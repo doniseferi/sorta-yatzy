@@ -16,7 +16,7 @@ export class ScoreCardFactory implements IScoreCardFactory {
             : this._scoreFactory = scoreFactory;
     }
 
-    Create(): IScoreCard {
+    create(): IScoreCard {
         return new ScoreCard(this._scoreFactory);
     }
 }
