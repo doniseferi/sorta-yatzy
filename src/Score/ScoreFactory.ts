@@ -21,6 +21,7 @@ import { injectable } from "inversify";
 import { container } from "../Ioc/inversify.config";
 import { TYPES } from "../Ioc/types";
 import { IAccumulate } from "../Accumulate/IAccumulate";
+import { IScoreByProxy } from "./ScoreByProxy/IScoreByProxy";
 
 @injectable()
 export class ScoreFactory implements IScoreFactory {
@@ -29,17 +30,17 @@ export class ScoreFactory implements IScoreFactory {
 
         switch (landingOn) {
             case ScoreTypes.Aces:
-                return new Aces(new DieFaceMultiplier());
+                return container.get<Aces>(TYPES.Aces);
             case ScoreTypes.Twos:
-                return new Twos(new DieFaceMultiplier());
+                return new Twos(container.get<IScoreByProxy>(TYPES.IScoreByProxy));
             case ScoreTypes.Threes:
-                return new Threes(new DieFaceMultiplier());
+                return new Threes(container.get<IScoreByProxy>(TYPES.IScoreByProxy));
             case ScoreTypes.Fours:
-                return new Fours(new DieFaceMultiplier());
+                return new Fours(container.get<IScoreByProxy>(TYPES.IScoreByProxy));
             case ScoreTypes.Fives:
-                return new Fives(new DieFaceMultiplier());
+                return new Fives(container.get<IScoreByProxy>(TYPES.IScoreByProxy));
             case ScoreTypes.Sixes:
-                return new Sixes(new DieFaceMultiplier());
+                return new Sixes(container.get<IScoreByProxy>(TYPES.IScoreByProxy));
             case ScoreTypes.OnePair:
                 return new OnePair();
             case ScoreTypes.TwoPairs:

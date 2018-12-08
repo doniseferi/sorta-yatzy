@@ -2,10 +2,11 @@ import { IScoreCard } from "./IScoreCard";
 import { Dice } from "../Dice";
 import { IScoreFactory } from "../Score/IScoreFactory";
 import { ScoreTypes } from "./ScoreTypes";
-import { inject } from "inversify";
+import { inject, injectable } from "inversify";
 import { TYPES } from "../Ioc/types";
 
-export class ShortCard implements IScoreCard {
+@injectable()
+export class ScoreCard implements IScoreCard {
 
     constructor(@inject(TYPES.IScoreFactory) private readonly scoreFactory: IScoreFactory) {
     }
