@@ -19,29 +19,23 @@ export abstract class Straight implements IScore {
     }
   }
 
-  invoke(collection: Dice): number {
+  invoke = (collection: Dice): number => {
     let die = collection.dice.map(x => x.value);
     let uniqueValues = [...new Set(die)];
     return this.isStraight(uniqueValues) ? this.points : 0;
-  }
+  };
 
-  private isStraight(collection: number[]): boolean {
-    return (
-      this.isTheRightLength(collection) &&
-      this.hasTheRequiredValue(collection) &&
-      this.hasTheRequiredAbsence(collection)
-    );
-  }
+  private isStraight = (collection: number[]): boolean =>
+    this.isTheRightLength(collection) &&
+    this.hasTheRequiredValue(collection) &&
+    this.hasTheRequiredAbsence(collection);
 
-  private hasTheRequiredAbsence(uniqueDieFaces: number[]): boolean {
-    return uniqueDieFaces.includes(this.requiredAbsenceFromVariables) === false;
-  }
+  private hasTheRequiredAbsence = (uniqueDieFaces: number[]): boolean =>
+    uniqueDieFaces.includes(this.requiredAbsenceFromVariables) === false;
 
-  private hasTheRequiredValue(uniqueDieFaces: number[]): boolean {
-    return uniqueDieFaces.includes(this.requiredValueInVariables);
-  }
+  private hasTheRequiredValue = (uniqueDieFaces: number[]): boolean =>
+    uniqueDieFaces.includes(this.requiredValueInVariables);
 
-  private isTheRightLength(unqiueDieFaces: number[]): boolean {
-    return unqiueDieFaces.length == this.requiredUniqueVariablesLength;
-  }
+  private isTheRightLength = (unqiueDieFaces: number[]): boolean =>
+    unqiueDieFaces.length == this.requiredUniqueVariablesLength;
 }

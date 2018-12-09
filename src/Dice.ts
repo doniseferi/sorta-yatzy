@@ -2,9 +2,7 @@ import Die from './Die';
 import { isNullOrUndefined } from 'util';
 
 export class Dice {
-  public static CreateUsingDieCollection(dice: Die[]): Dice {
-    return new Dice(dice);
-  }
+  public static CreateUsingDieCollection = (dice: Die[]): Dice => new Dice(dice);
 
   public static CreateUsingNumbersCollection(numbers: number[]): Dice {
     let dice = numbers.map(number => new Die(number));
@@ -29,7 +27,7 @@ export class Dice {
     this.validate(dice);
   }
 
-  private validate(dice: Die[]): void {
+  private validate = (dice: Die[]): void => {
     const numberOfDieInYatzyCollection = 5;
 
     if (isNullOrUndefined(dice)) throw new Error('The Yatzy collection is null or undefined.');
@@ -39,5 +37,5 @@ export class Dice {
 
     if (dice.some(die => isNullOrUndefined(die)))
       throw new Error('The Yatzy collection has a null or undefined value');
-  }
+  };
 }

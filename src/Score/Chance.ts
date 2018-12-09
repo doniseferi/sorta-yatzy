@@ -7,7 +7,5 @@ import { TYPES } from '../Ioc/types';
 export class Chance implements IScore {
   constructor(@inject(TYPES.IAccumulate) private readonly accumulate: IAccumulate) {}
 
-  invoke(collection: Dice): number {
-    return this.accumulate.sum(collection);
-  }
+  invoke = (collection: Dice): number => this.accumulate.sum(collection);
 }

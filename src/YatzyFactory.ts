@@ -13,7 +13,7 @@ export class YatzyFactory implements IYatzyFactory {
     this._scoreCard = scoreCardFactory.create();
   }
 
-  Create(): Yatzy {
+  create(): Yatzy {
     return new Yatzy(this._scoreCard);
   }
 }

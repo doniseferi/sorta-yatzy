@@ -11,7 +11,7 @@ describe('Yatzy', () => {
 
   before('Initialize Yatzy', () => {
     
-    yatzy = container.get<IYatzyFactory>(TYPES.IYatzyFactory).Create();
+    yatzy = container.get<IYatzyFactory>(TYPES.IYatzyFactory).create();
   });
 
   describe('Chance', () => {

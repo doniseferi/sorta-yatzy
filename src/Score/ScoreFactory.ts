@@ -33,7 +33,7 @@ export class ScoreFactory implements IScoreFactory {
     this._accumulate = container.get<IAccumulate>(TYPES.IAccumulate);
   }
 
-  create(landingOn: ScoreTypes): IScore {
+  create = (landingOn: ScoreTypes): IScore => {
     switch (landingOn) {
       case ScoreTypes.Aces:
         return new Aces(this._scoreByProxy);
@@ -68,5 +68,5 @@ export class ScoreFactory implements IScoreFactory {
       default:
         throw new Error('Can not recongise score card type.');
     }
-  }
+  };
 }
