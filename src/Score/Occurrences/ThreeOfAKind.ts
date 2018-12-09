@@ -1,7 +1,7 @@
-import { Occurrences } from "./Occurrences";
+import { Occurrences } from './Occurrences';
 
 export class ThreeOfAKind extends Occurrences {
-    constructor() {
-        super(3);
-    }
+  constructor() {
+    super(3);
+  }
 }

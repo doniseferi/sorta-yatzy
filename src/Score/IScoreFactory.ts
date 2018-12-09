@@ -1,6 +1,6 @@
-import { IScore } from "./IScore";
-import { ScoreTypes } from "../Scorecard/ScoreTypes";
+import { IScore } from './IScore';
+import { ScoreTypes } from '../Scorecard/ScoreTypes';
 
 export interface IScoreFactory {
-    create(landingOn: ScoreTypes): IScore;
+  create(landingOn: ScoreTypes): IScore;
 }

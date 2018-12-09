@@ -3,9 +3,7 @@ import { Dice } from './Dice';
 import { IScoreCard } from './Scorecard/IScoreCard';
 
 export default class Yatzy {
-
-  constructor(private readonly scoreCard: IScoreCard) {
-  }
+  constructor(private readonly scoreCard: IScoreCard) {}
 
   chance(d1: Die, d2: Die, d3: Die, d4: Die, d5: Die): number {
     var collection = Dice.CreateUsingDie(d1, d2, d3, d4, d5);

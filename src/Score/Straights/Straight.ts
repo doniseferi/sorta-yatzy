@@ -1,51 +1,47 @@
-import { IScore } from "../IScore";
-import { Dice } from "../../Dice";
+import { IScore } from '../IScore';
+import { Dice } from '../../Dice';
 
 export abstract class Straight implements IScore {
+  private readonly requiredUniqueVariablesLength: number = 5;
+  private readonly requiredValueInVariables: number;
+  private readonly requiredAbsenceFromVariables: number;
+  private readonly points: number;
 
-    private readonly requiredUniqueVariablesLength: number = 5;
-    private readonly requiredValueInVariables: number = 0;
-    private readonly requiredAbsenceFromVariables: number = 0;
-    private readonly points: number = 0;
-
-    constructor(protected readonly smallStraight: boolean) {
-        if (smallStraight) {
-            this.requiredValueInVariables = 1;
-            this.requiredAbsenceFromVariables = 6;
-            this.points = 15;
-        }
-        else {
-            this.requiredValueInVariables = 6;
-            this.requiredAbsenceFromVariables = 1;
-            this.points = 20;
-        }
+  constructor(protected readonly smallStraight: boolean) {
+    if (smallStraight) {
+      this.requiredValueInVariables = 1;
+      this.requiredAbsenceFromVariables = 6;
+      this.points = 15;
+    } else {
+      this.requiredValueInVariables = 6;
+      this.requiredAbsenceFromVariables = 1;
+      this.points = 20;
     }
+  }
 
-    invoke(collection: Dice): number {
-        let die = collection.dice.map(x => x.value);
-        let uniqueValues = [...new Set(die)];
-        return (this.isStraight(uniqueValues))
-            ? this.points
-            : 0;
-    }
+  invoke(collection: Dice): number {
+    let die = collection.dice.map(x => x.value);
+    let uniqueValues = [...new Set(die)];
+    return this.isStraight(uniqueValues) ? this.points : 0;
+  }
 
-    private isStraight(collection: number[]): boolean {
-        return (
-            this.isTheRightLength(collection) &&
-            this.hasTheRequiredValue(collection) &&
-            this.hasTheRequiredAbsence(collection)
-        );
-    }
+  private isStraight(collection: number[]): boolean {
+    return (
+      this.isTheRightLength(collection) &&
+      this.hasTheRequiredValue(collection) &&
+      this.hasTheRequiredAbsence(collection)
+    );
+  }
 
-    private hasTheRequiredAbsence(uniqueDieFaces: number[]): boolean {
-        return uniqueDieFaces.includes(this.requiredAbsenceFromVariables) === false;
-    }
+  private hasTheRequiredAbsence(uniqueDieFaces: number[]): boolean {
+    return uniqueDieFaces.includes(this.requiredAbsenceFromVariables) === false;
+  }
 
-    private hasTheRequiredValue(uniqueDieFaces: number[]): boolean {
-        return uniqueDieFaces.includes(this.requiredValueInVariables);
-    }
+  private hasTheRequiredValue(uniqueDieFaces: number[]): boolean {
+    return uniqueDieFaces.includes(this.requiredValueInVariables);
+  }
 
-    private isTheRightLength(unqiueDieFaces: number[]): boolean {
-        return unqiueDieFaces.length == this.requiredUniqueVariablesLength;
-    }
+  private isTheRightLength(unqiueDieFaces: number[]): boolean {
+    return unqiueDieFaces.length == this.requiredUniqueVariablesLength;
+  }
 }

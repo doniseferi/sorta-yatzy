@@ -1,7 +1,7 @@
-import { Straight } from "./Straight";
+import { Straight } from './Straight';
 
 export class LargeStraight extends Straight {
-    constructor() {
-        super(false);
-    }
+  constructor() {
+    super(false);
+  }
 }

@@ -1,5 +1,4 @@
-import { IUpperSection } from "./IUpperSection";
-import { ILowerSection } from "./ILowerSection";
+import { IUpperSection } from './IUpperSection';
+import { ILowerSection } from './ILowerSection';
 
-export interface IScoreCard extends IUpperSection, ILowerSection {
-}
+export interface IScoreCard extends IUpperSection, ILowerSection {}

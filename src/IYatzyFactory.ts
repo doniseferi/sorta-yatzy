@@ -1,5 +1,5 @@
-import Yatzy from "./Yatzy";
+import Yatzy from './Yatzy';
 
 export interface IYatzyFactory {
-    Create(): Yatzy;
+  Create(): Yatzy;
 }

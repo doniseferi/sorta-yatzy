@@ -1,5 +1,5 @@
-import { IScoreCard } from "./IScoreCard";
+import { IScoreCard } from './IScoreCard';
 
-export interface IScoreCardFactory  {
-    create() : IScoreCard
+export interface IScoreCardFactory {
+  create(): IScoreCard;
 }
