@@ -22,7 +22,7 @@ npm run watch
 ```
 
 ## Before refactoring
-Before the factor the entire logic was contained into one file: Yatzy.ts
+Before the refactor the entire logic was contained into one file: Yatzy.ts
 ```
 export default class Yatzy {
   private dice: number[];
